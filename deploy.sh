@@ -1,12 +1,11 @@
 #!/bin/bash
 
 # === CONFIG ===
-REPO_URL="https://github.com/yourusername/coming-soon-app.git"
-APP_DIR="/opt/coming-soon-app"
-DOMAIN="yourdomain.com"
-EMAIL="you@example.com"
+APP_DIR="$PWD"
+DOMAIN="xelec.tech"
+EMAIL="xelecgulshan@gmail.com"
 
-echo "🚀 Starting deployment..."
+echo "🚀 Starting deployment from $APP_DIR..."
 
 # === Docker Install ===
 if ! command -v docker &> /dev/null; then
@@ -17,16 +16,6 @@ if ! command -v docker &> /dev/null; then
   systemctl start docker
 else
   echo "✅ Docker already installed."
-fi
-
-# === Clone or Pull Repo ===
-if [ -d "$APP_DIR" ]; then
-  echo "🔄 Updating code..."
-  cd "$APP_DIR"
-  git pull
-else
-  echo "📦 Cloning repo..."
-  git clone "$REPO_URL" "$APP_DIR"
 fi
 
 # === Build & Run Docker ===
