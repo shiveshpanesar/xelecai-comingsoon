@@ -7,7 +7,7 @@ export default function App() {
 
     const sendData = async () => {
         try {
-            const res = await axios.post("http://localhost:8000/api/ping", {
+            const res = await axios.post("/api/ping", {
                 random: Math.random().toString(36).substring(7),
             });
             setResponse(JSON.stringify(res.data));
